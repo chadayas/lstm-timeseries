@@ -129,13 +129,13 @@ class LSTMModel(nn.Module):
         out,_ = self.lstm(x)
         out = self.linear(out[:,-1,:])
         return out 
-    
         
 
 
 model = LSTMModel()
 batch_size = 32
 lr = 1e-3
+
 def training(dataloader, model, optimizer, loss_fn):
     size = len(dataloader.dataset)
     model.train()
@@ -171,7 +171,9 @@ crit = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=lr)
 epochs = 55
 
-for t in range(epochs):
+if __name__ == '__main__':
+    
+    for t in range(epochs):
         print(f'epoch: {t+1}\n -----------------------')
         training(train_dataset, model, optimizer, crit)
         testing(test_dataset, model, crit)
