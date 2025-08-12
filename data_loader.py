@@ -3,9 +3,7 @@ import requests
 
 
 
-# API Key to grab data from FRED website
 
-api_key = 'd48605b363c3ec002b7dfc61977e451c'
 
 
 base_url = 'https://api.stlouisfed.org/fred/series/observations'
@@ -97,12 +95,5 @@ class Data_Loader():
             raise NameError('Need to set cross_valid True or False')
 
 
-start_date = '1776-07-04'
-end_date = '9999-12-31'
-hold = Data_Loader(api_key=api_key, series_id='DGS10')
-
-data = hold.get_data('json', start_date=start_date, end_date=end_date)
-standard_data = hold.standardize()
-       
-print(hold.prepare_data(10,False))
+    
 
