@@ -60,28 +60,28 @@ class Data_Loader():
 
     def standardize(self):
         
-             self.data_vals = (self.data_vals - self.mean)/self.stdev
+            self.data_vals = (self.data_vals - self.mean)/self.stdev
         
     def prepare_data(self, steps, cross_valid=None):
         
-             data = self.data_vals.reshape(self.data_vals.shape[0],1)
+            data = self.data_vals.reshape(self.data_vals.shape[0],1)
 
-             x_data, y_data = [], []
+            x_data, y_data = [], []
         
-             for i in range(len(data) - steps):
-                   x_data.append(data[i:i+steps,])
-                   y_data.append(data[i+steps,])
+            for i in range(len(data) - steps):
+                     x_data.append(data[i:i+steps,])
+                     y_data.append(data[i+steps,])
             
-             x_data = np.array(x_data)
-             y_data = np.array(y_data)
+            x_data = np.array(x_data)
+            y_data = np.array(y_data)
        
-             if cross_valid == True:
+            if cross_valid == True:
                      x_folds = np.array_split(x_data,5)
                      y_folds = np.array_split(y_data,5)    
     
                      return x_folds, y_folds
         
-             elif cross_valid == False:
+            elif cross_valid == False:
                     num_train = 14000
                     num_test = 15000
                 
@@ -90,7 +90,7 @@ class Data_Loader():
 
                     return x_splits, y_splits 
         
-             elif cross_valid == None:
+            elif cross_valid == None:
                      raise NameError('Need to set cross_valid True or False')
 
 
